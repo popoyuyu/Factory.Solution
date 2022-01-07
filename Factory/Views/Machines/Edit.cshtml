@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+
+<div class="jumbotron">
+  <h1>Edit @Model.MachineName</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.MachineId)
+
+  @Html.LabelFor(model => model.MachineName)
+  @Html.EditorFor(model => model.MachineName)
+
+  @Html.LabelFor(model => model.Description)
+  @Html.EditorFor(model => model.Description)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Return to Machine List", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

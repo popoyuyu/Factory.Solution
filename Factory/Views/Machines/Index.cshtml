@@ -16,7 +16,7 @@
 <ul>
   @foreach (Machine machine in Model)
   {
-    @Html.ActionLink($"{machine.MachineName}", "Details", new{ id = machine.MachineId})
+    <li>@Html.ActionLink($"{machine.MachineName}", "Details", new{ id = machine.MachineId})</li>
   }
 </ul>
 

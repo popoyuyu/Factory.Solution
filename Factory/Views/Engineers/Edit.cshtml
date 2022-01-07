@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer;
+
+<div class="jumbotron">
+  <h1>Edit @Model.EngineerName</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  @Html.LabelFor(model => model.EngineerName)
+  @Html.EditorFor(model => model.EngineerName)
+  <br>
+  @Html.LabelFor(model => model.Description)
+  <br>
+  @Html.EditorFor(model => model.Description)
+  <br><br>
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to Engineers list", "Index")</p>

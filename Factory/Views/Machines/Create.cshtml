@@ -9,12 +9,14 @@
 
 @using (Html.BeginForm())
 {
-  @Html.TextBoxFor(model => model.MachineName, placeholder = "Machine name", required = "required")
+  @Html.LabelFor(model => model.MachineName)
+  @Html.TextBoxFor(model => model.MachineName, new {required = "required"})
   <br>
-  @Html.TextBoxFor(model => model.Description, placeholder = "Description", required = "required")
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description, new {required = "required"})
   <br>
   <input type="submit" value="Add Machine" />
 }
 
-<p>@Html.ActionLink("Return to Machines", "Index")</p>
-<p>@Html.ActionLink("Return Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Back to Machines", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

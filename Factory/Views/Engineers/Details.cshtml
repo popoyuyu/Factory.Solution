@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer;
+
+<div class="jumbotron">
+  <h1>Engineer Details</h1>
+</div>
+
+<h2>@Html.DisplayFOr(model => model.EngineerName)</h2>
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>Engineer has not been assinged to any machines</p>
+}
+else
+{
+  <h4>Machines assigned to @Model.EngineerName:</h4>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@join.Machine.MachineName</li>
+    @using (Html.BeginForm("DeleteMachine", "Engineers"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete" />
+    }
+  }
+}
+
+<p>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Back to Engineers list", "Index")</p>

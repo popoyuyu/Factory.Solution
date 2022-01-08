@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Machine;
+@model Factory.Models.Machine
 
 <h1>Machine Details</h1>
 <div>
@@ -23,7 +23,7 @@ else
       <li>@join.Engineer.EngineerName</li>
       @using (Html.BeginForm("DeleteEngineer", "Machines"))
       {
-        @Html.Hidden("JoinId", @join.EngineerMachineId)
+        @Html.Hidden("joinId", @join.EngineerMachineId)
         <input type="submit" value="Delete" />
       }
     }
@@ -32,4 +32,4 @@ else
 <p>@Html.ActionLink("Add an engineer", "AddEngineer", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>
-<p>@Html.ActionLink("Back to Machines list", "Index")</p>.
+<p>@Html.ActionLink("Back to Machines list", "Index")</p>

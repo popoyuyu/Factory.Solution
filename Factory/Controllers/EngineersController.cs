@@ -80,13 +80,12 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult DeleteMachine(int joinId, int id)
+    public ActionResult DeleteMachine(int joinId)
     {
       var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
       _db.EngineerMachine.Remove(joinEntry);
       _db.SaveChanges();
-      var model = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-      return View("Details", model);
+      return RedirectToAction("Index");
     }
     public ActionResult Delete(int id)
     {
